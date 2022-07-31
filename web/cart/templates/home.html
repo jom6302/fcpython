@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>滑雪產品</title>
+        <!--CSS連結-->
+        <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+        <!--jQuery連結-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!--JS連結-->
+        <script src="{% static 'js/script.js' %}"></script>
+        <!--FontAwesome-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <!--bootstrap連結-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <!--  Camera_Slideshow Styles  -->
+        <link rel='stylesheet' id='camera-css' href='http://project.dimpost.com/camera-slideshow/css/camera.css' type='text/css' media='all'>
+        <!-- 套件Camera Slideshow Scripts -->
+        <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+        <script type='text/javascript' src='http://project.dimpost.com/camera-slideshow/scripts/jquery.mobile.customized.min.js'></script>
+        <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+        <script type='text/javascript' src='http://project.dimpost.com/camera-slideshow/scripts/camera.min.js'></script>
+    </head>
+    </head>
+    <body>
+        <div class="container-all">
+            <div class="container-left">
+                <!-- 左側導覽列 -->
+                <nav id="sidebar">
+                    <button type="button" id="collapse" class="collapse-btn">
+                        <i class="fas fa-align-left"></i>
+                    </button>
+                    <!-- list列表 -->
+                    <ul class="list-unstyled">  <!-- 沒有list前面的點 -->
+                        <img src="{% static 'images/logo.png' %}">
+                        <p>Let $ go</p>
+                        <li>
+                            <a href="/">首頁 <i class="fas fa-home"></i></a>
+                        </li>
+                        <li>
+                            <a href="#">關於本網站 <i class="fab fa-cc-amazon-pay"></i></a>
+                        </li>
+                        <li>
+                            <a href="#sublist" data-bs-toggle="collapse" id="dropdwon">相關產品 <i class="fas fa-snowboarding"></i></a>
+                            <!-- 相關產品子連結 -->
+                            <ul id="sublist" class="list-unstyled collapse">
+                                <li>
+                                    <a href="/product">Snowboard</a>
+                                </li>
+                                <li>
+                                    <a href="#">Boots</a>
+                                </li>
+                                <li>
+                                    <a href="#">Goggles</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" id="cart">購物車(0)<i class="fas fa-cart-plus"></i></a>
+                        </li>
+                        {% if request.user.is_authenticated %}
+                        <li>
+                            <a class="username">{{request.user.username}}</a>
+                            <a href="/logout">登出 <i class="fas fa-sign-in-alt"></i></a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="/login">登入 <i class="fas fa-user-plus"></i></a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            <div class="container-right">
+                <div class="container-fluid">
+                   <div class="slide_container">
+                        <div class="camera_wrap" id="camera_wrap_1">
+                            <!-- slide1 -->
+                            <div data-link="http://www.google.com" data-thumb="{% static 'images/9.jpg' %}" data-src="{% static 'images/5.jpg' %}">
+                                <!--  camera_cation 從右邊進入特效   -->
+                                <div class="camera_caption fadeFromRight">
+                                    <h3>體驗人生</h3>
+                                </div>
+                            </div>
+                            <!-- slide2 -->
+                            <div data-link="http://www.google.com" data-thumb="{% static 'images/6.jpg' %}" data-src="{% static 'images/2.jpg' %}">
+
+                                <div class="camera_caption fadeFromBottom">
+                                    <h3>嘗試改變</h3>
+                                </div>
+                            </div>
+                            <!-- slide3 -->
+                            <div data-link="http://www.google.com" data-thumb="{% static 'images/7.jpg' %}" data-src="{% static 'images/3.jpg' %}">
+                                <div class="camera_caption fadeFromBottom">
+                                    <h3>超越自我</h3>
+                                </div>
+                            </div>
+                            <!-- slide4 -->
+                            <div data-link="http://www.google.com" data-thumb="{% static 'images/8.jpg' %}" data-src="{% static 'images/4.jpg' %}">
+                                <div class="camera_caption fadeFromRight">
+                                    <h3>挑戰極限</h3>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,150 @@
+.container-all {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    width: 200px;
+    height: 100%;
+    background-color: Indigo;
+    color: white;
+    transition: 1s;
+}
+
+#sidebar.active {
+    margin-left:-160px;
+}
+
+.container-right {
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    padding: 5px;
+}
+
+.collapse-btn {
+    position: relative;
+    top: 1%;
+    left: 160px;
+    background-color: Indigo;
+    color: white;
+    border: none;
+    font-size: 30px;
+    padding: 5px;
+}
+
+.collapse-btn:hover {
+    background-color: BlueViolet ;
+    transition: 0.4s;
+}
+
+#sidebar img {
+    margin-left: 60px;
+    margin-top: 40px;
+}
+
+#sidebar p {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+#sidebar ul li a:hover {
+    color: indigo;
+    background: #fff;
+}
+
+.fas , .fab {
+    float: right;
+}
+
+ul ul li a {
+    background-color: LightSlateBlue;
+    font-size: 20px;
+    font-style: italic;
+}
+
+@media (max-width:600px){
+    #sidebar{
+        margin-left: -100px;
+        width: 150px;
+        font-size: 10px;
+    }
+    .collapse-btn{
+        margin-left: -50px;
+    }
+    #sidebar.active {
+        margin-left: 0px;
+    }
+    #sidebar p {
+        font-size: 10px;
+        margin-left: -10px;
+    }
+    #sidebar img {
+        margin-left: 30px;
+    }
+}
+
+
+
+
+
+
+.slide_container {
+    margin: 0 auto;
+
+    width: 100%;
+    max-width: 900px;
+    overflow: hidden;
+}
+
+
+.camera_pag_ul {
+    border: none !important;
+    background: none !important;
+}
+
+.camera_pag_ul li {
+    float: inherit !important;
+    padding: inherit !important;
+}
+
+.camera_pag_ul {
+    margin: 0 !important;
+    border: 0 !important;
+}
+
+.camera_pie {
+    display: none;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(97, 97, 97);
+    font-size: 50px;
+}
+
+.camera_wrap a {
+    text-decoration: none;
+    color: rgb(255, 247, 5);
+    font-size: 18px;
+}
+
+.camera_wrap h3 {
+    font-size: 25px;
+    text-align: center;
+}
+
+.camera_wrap a:hover {
+    color: rgb(134, 255, 53);
+}

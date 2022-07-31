@@ -1,0 +1,30 @@
+{% load static %}
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'shop/login.css' %}">
+        <title>Login</title>
+    </head>
+    <body>
+        <div class="section">
+          <h1>登入</h1>
+
+          {% for message in messages %}
+            <h3>{{message}}</h3>
+          {% endfor %}
+
+          <form method="POST" action="">
+              {% csrf_token %}
+
+              <label>帳號:</label>
+              <input type="text" name="username" /></br>
+
+              <label>密碼:</label>
+              <input type="password" name="password" /></br>
+
+              <input class="btn btn-primary" type="submit" value="登入"/><a href="{% url 'register' %}">註冊</a>
+          </form>
+        </div>
+    </body>
+</html>

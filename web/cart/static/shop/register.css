@@ -1,0 +1,17 @@
+body{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -200px 0 0 -150px;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0d4zNXbgPGYyH7HIzWHvTYV2zx0S4i7ghqQ&usqp=CAU");
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    box-shadow: 10px 5px 5px gray;
+}
+
+h1{
+    color: red;
+}
+
+
+

@@ -1,0 +1,44 @@
+.card-title{
+    font-weight: 900;
+}
+
+.card-text{
+    color: blue;
+    font-weight: 800;
+}
+
+.card-body{
+    background-color: #708090
+}
+
+body{
+    background-color: #000000;
+}
+
+
+
+.jumbotron{
+    background-image: url("https://d2r4787i3zn8dn.cloudfront.net/site_images/images/63b0f53d16438fd964ef2847e3f8c0a8deae8ba2.jpg?1538307308");
+    background-repeat: no-repeat, repeat;
+    background-position: 85% 15%;
+    background-size: cover;
+}
+
+nav{
+    background-image: url("https://i.epochtimes.com/assets/uploads/2021/01/shutterstock_164538995.jpg");
+    background-position: 30% 70%;
+}
+
+.nav-link{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.carousel-item{
+    height: 500px;
+}
+.carousel-item img{
+    height: 500px;
+}
+
+

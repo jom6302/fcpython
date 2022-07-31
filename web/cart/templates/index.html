@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <!-- bootstrap連結 -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+      <!-- style.css 連結-->
+      <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+      <title>Snowboard</title>
+  </head>
+  <body>
+    {% include 'navbar.html'%}
+    <!--   Search for  -->
+    <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <form class="card card-sm">
+                  <div class="card-body row no-gutters align-items-center">
+                        <div class="col">
+                            <input type="search" name='item_name' placeholder="商品查詢" class="form-control form-control-borderless">
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-success" type="submit">查詢</button>
+                        </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+
+      <div class="row">
+        {% for p in goods %}
+        <div class="col-md-3">
+          <div class="card">
+            <img src="{{p.img}}" class="card-img-top">
+            <div class="card-body">
+              <div id="t{{p.id}}" class="card-title">
+                  {{p.title}}
+              </div>
+              <div class="card-text">
+                  NT {{p.price}}
+              </div>
+              <a href="/{{p.id}}" class="btn btn-warning">商品細節</a>
+              <button id="{{p.id}}" class="btn atc btn-warning">加入購物車</button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 offset-md-5">
+            <ul class="pagination">
+
+                {% if goods.has_previous %}
+                <li class="page-item">
+                    <a href="?page={{goods.previous_page_number}}">上一頁</a>
+                </li>
+                {% endif %}
+
+                <li class="current">
+                    頁數:{{goods.number}} of {{goods.paginator.num_pages}}
+                </li>
+
+                {% if goods.has_next %}
+                <li class="page-item">
+                    <a href="?page={{goods.next_page_number}}">下一頁</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!--  jQuery  -->
+  <script type="text/javascript">
+        console.log('This is working');
+
+        if(localStorage.getItem('cart') == null){
+            var cart = {};
+        }
+        else{
+            cart = JSON.parse(localStorage.getItem('cart'));
+        }
+
+        $(document).on('click', '.atc',function(){
+            var item_id = this.id.toString();
+            console.log(item_id);
+
+            if(cart[item_id]!=undefined){
+                cart[item_id] = cart[item_id] + 1;
+            }
+            else{
+                cart[item_id] = 1;
+            }
+            console.log(cart);
+
+            localStorage.setItem('cart',JSON.stringify(cart));
+            document.getElementById("cart").innerHTML = "購物車("+ Object.keys(cart).length +")";
+        });
+
+<!--        彈出框-->
+<!--        $(function () {-->
+<!--            $('[data-toggle="popover"]').popover();-->
+<!--            document.getElementById("cart").setAttribute('data-content', '<h5>這是你的購物車</h5>')-->
+<!--        })-->
+
+        <!--購物車展示功能-->
+
+        DisplayCart(cart);
+        function DisplayCart(cart){
+            var cartString ="";
+            cartString += "<h5>這是你的購物車</h5>";
+            var cartIndex = 1;
+            for(var x in cart){
+                cartString += cartIndex;
+                cartString += document.getElementById("t"+x).innerHTML + "數量" + cart[x] + "</br>"
+                cartIndex += 1;
+            }
+
+<!--            cartString += <a href="/checkout"><button class="btn btn-danger" id="checkout">結帳囉</button></a>;-->
+            document.getElementById("cart").setAttribute('data-content', cartString);
+            $('[data-toggle="popover"]').popover();
+        }
+
+  </script>
+</html>
+
+
+
+
+

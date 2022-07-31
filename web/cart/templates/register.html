@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'shop/register.css' %}">
+</head>
+<body>
+      <h1>註冊</h1>
+      <form method="POST" action="">
+          {% csrf_token %}
+          {{form.as_p}}
+          <input type="submit" value="註冊" />
+      </form>
+</body>
+</html>
